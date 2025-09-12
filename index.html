@@ -105,9 +105,11 @@
                   <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                    <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Supplementary</span>
+                    <!-- <i class="fas fa-file-pdf"></i> -->
+                    <!-- <i class="fas fa-cogs"></i> -->
+                    🤗
+                  </span>         
+                  <span>Checkpoints</span>
                 </a>
               </span>
 
@@ -131,11 +133,11 @@
 
 
 <!-- Teaser video-->
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
+        Your video here
         <source src="static/videos/banner_video.mp4"
         type="video/mp4">
       </video>
@@ -144,7 +146,7 @@
       </h2>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
@@ -155,7 +157,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Vision-language-action (VLA) models have demonstrated remarkable potential for real-world robotic tasks, showcasing strong task execution capabilities.
+            However, their deployment on resource-constrained devices is hindered by the heavy computational overhead of attention-based computation on large volumes of visual tokens. 
+            To address this challenge, we propose LightVLA, a differentiable token pruning framework that adaptively prunes visual tokens in a performance-driven manner. LightVLA generates dynamic queries to evaluate visual token importance, and adopts Gumbel softmax to enable differentiable token selection. Through fine-tuning, LightVLA learns to preserve only the most informative visual tokens while pruning tokens that does not contribution to task execution, thereby improving efficiency and performance simultaneously.
+            Experimental results demonstrate that LightVLA outperforms different VLA models and existing token pruning methods across diverse tasks on the LIBERO benchmark, achieving higher success rates with substantially reduced computational overhead.
+            Specifically, LightVLA reduces FLOPs and latency by 59.1% and 38.2% respectively, with a 2.9% improvement in task success rate.
+            Meanwhile, we also investigate the training-aware token pruning method LightVLA* with additional trainable parameters, which also achieves satisfactory performance.
+            Our work reveals an inherent visual sparsity within VLA models, showing that even a small subset of informative visual tokens can outperform full visual token sets.
+            To the best of our knowledge, LightVLA is the first work to apply adaptive visual token pruning to VLA tasks, marking a significant step toward more efficient, powerful and practical real-time robotic systems. Code and model will be released.
           </p>
         </div>
       </div>
@@ -165,34 +174,60 @@
 <!-- End paper abstract -->
 
 
+<!-- Paper approach -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Approach</h2>
+        <div class="content has-text-justified">
+          <!-- <p>
+            TODO.
+          </p> -->
+        </div>
+        <br/>
+        <img src="static/images/framework.jpg" alt="LightVLA Framework" style="width: 100%;">
+        <h2 class="subtitle has-text-centered">
+          <br/>
+          Overview of the LightVLA framework. Our method dynamically prunes visual tokens through learnable importance scoring and differentiable selection, significantly reducing computational cost while improving task performance.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper approach -->
+
+
+
+
 <!-- Image carousel -->
-<section class="hero is-small">
+<!-- <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
-        <!-- Your image here -->
+        Your image here
         <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           First image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
+        Your image here
         <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           Second image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
+        Your image here
         <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
          Third image description.
        </h2>
      </div>
      <div class="item">
-      <!-- Your image here -->
+      Your image here
       <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
         Fourth image description.
@@ -201,64 +236,276 @@
   </div>
 </div>
 </div>
-</section>
+</section> -->
 <!-- End image carousel -->
 
 
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Visual Token Pruning Demonstrations on LIBERO</h2>
+        <div class="content has-text-justified">
+          <p>
+            We demonstrate LightVLA's adaptive token pruning capabilities across four task categories in the LIBERO benchmark: Spatial, Object, Goal, and Long tasks. The visualizations show how our method intelligently preserves task-relevant visual tokens while pruning redundant information.
+          </p>
+        </div>
+        <br/>
+        
+        <!-- Spatial Tasks -->
+        <h3 class="title is-5">Spatial</h3>
+        <div class="columns is-multiline">
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/spatial/task=0--episode=20--success=True--task=pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the black bowl between the plate and the ramekin and place it on the plate</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/spatial/task=6--episode=20--success=True--task=pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the black bowl next to the cookie box and place it on the plate</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/spatial/task=8--episode=20--success=True--task=pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the black bowl next to the plate and place it on the plate</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/spatial/task=9--episode=20--success=True--task=pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the black bowl on the wooden cabinet and place it on the plate</p>
           </div>
         </div>
+
+        <!-- Object Tasks -->
+        <h3 class="title is-5">Object</h3>
+        <div class="columns is-multiline">
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/object/task=0--episode=20--success=True--task=pick_up_the_alphabet_soup_and_place_it_in_the_basket.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the alphabet soup and place it in the_basket</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/object/task=3--episode=20--success=True--task=pick_up_the_bbq_sauce_and_place_it_in_the_basket.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the bbq sauce and place it in the basket</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/object/task=8--episode=19--success=True--task=pick_up_the_chocolate_pudding_and_place_it_in_the_basket.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the chocolate pudding and place it in the basket</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/object/task=9--episode=20--success=True--task=pick_up_the_orange_juice_and_place_it_in_the_basket.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Pick up the orange juice and place it in the basket</p>
+          </div>
+        </div>
+
+        <!-- Goal Tasks -->
+        <h3 class="title is-5">Goal</h3>
+        <div class="columns is-multiline">
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/goal/task=2--episode=20--success=True--task=put_the_wine_bottle_on_top_of_the_cabinet.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Put the wine bottle on top of the cabinet</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/goal/task=3--episode=20--success=True--task=open_the_top_drawer_and_put_the_bowl_inside.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Open the top drawer and put the bowl inside</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/goal/task=4--episode=20--success=True--task=put_the_bowl_on_top_of_the_cabinet.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Put the bowl on top of the cabinet</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/goal/task=9--episode=20--success=True--task=put_the_wine_bottle_on_the_rack.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Put the wine bottle on the rack</p>
+          </div>
+        </div>
+
+        <!-- Long-horizon Tasks -->
+        <h3 class="title is-5">Long</h3>
+        <div class="columns is-multiline">
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/10/task=0--episode=20--success=True--task=put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Put both the alphabet soup and the tomato sauce in the basket</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/10/task=2--episode=20--success=True--task=turn_on_the_stove_and_put_the_moka_pot_on_it.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Turn on the stove and put the moka pot on it</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/10/task=6--episode=20--success=True--task=put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Put the white mug on the plate and put the chocolate pudding to the right of the plate</p>
+          </div>
+          <div class="column is-3">
+            <video controls autoplay muted loop style="width: 100%;">
+              <source src="static/videos/visualizations/10/task=9--episode=20--success=True--task=put_the_yellow_and_white_mug_in_the_microwave_and_close_it.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6">Put the yellow and white mug in the microwave and close it</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Failure Case Analysis</h2>
+        <div class="content has-text-justified">
+          <p>
+            While LightVLA achieves strong overall performance, we also analyze failure cases to better understand the limitations of our approach. These examples reveal scenarios where aggressive token pruning may miss critical visual information or where the task complexity exceeds the model's current capabilities. Understanding these failure modes is crucial for future improvements.
+          </p>
+        </div>
+        <br/>
+        
+        <!-- Failure Cases Grid -->
+        <div class="columns is-multiline">
+          <!-- Spatial Failure -->
+          <div class="column is-6">
+            <h4 class="title is-6">Spatial Task Failure</h4>
+            <video controls muted style="width: 100%; border: 2px solid #ff4444; border-radius: 5px;">
+              <source src="static/videos/visualizations/spatial/task=8--episode=5--success=False--task=pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="color: #ff4444;">
+              <strong>Issue:</strong> Pick up the black bowl next to the plate and place it on the plate
+            </p>
+          </div>
+          
+          <!-- Object Failure -->
+          <div class="column is-6">
+            <h4 class="title is-6">Object Task Failure</h4>
+            <video controls muted style="width: 100%; border: 2px solid #ff4444; border-radius: 5px;">
+              <source src="static/videos/visualizations/object/task=8--episode=17--success=False--task=pick_up_the_chocolate_pudding_and_place_it_in_the_basket.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="color: #ff4444;">
+              <strong>Issue:</strong> Pick up the chocolate pudding and place it in the basket
+            </p>
+          </div>
+          
+          <!-- Goal Failure -->
+          <div class="column is-6">
+            <h4 class="title is-6">Goal Task Failure</h4>
+            <video controls muted style="width: 100%; border: 2px solid #ff4444; border-radius: 5px;">
+              <source src="static/videos/visualizations/goal/task=3--episode=17--success=False--task=open_the_top_drawer_and_put_the_bowl_inside.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="color: #ff4444;">
+              <strong>Issue:</strong> Open the top drawer and put the bowl inside
+            </p>
+          </div>
+          
+          <!-- Long-horizon Failure -->
+          <div class="column is-6">
+            <h4 class="title is-6">Long Task Failure</h4>
+            <video controls muted style="width: 100%; border: 2px solid #ff4444; border-radius: 5px;">
+              <source src="static/videos/visualizations/10/task=9--episode=7--success=False--task=put_the_yellow_and_white_mug_in_the_microwave_and_close_it.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="color: #ff4444;">
+              <strong>Issue:</strong> Put the yellow and white mug in the microwave and close it
+            </p>
+          </div>
+        </div>
+        
+        <!-- Key Insights -->
+        <div class="box" style="margin-top: 30px;">
+          <h4 class="title is-5">Key Insights from Failure Analysis</h4>
+          <div class="content has-text-left">
+            <ul>
+              <li><strong>Spatial</strong> Failures often occur when fine-grained spatial relationships are pruned too aggressively</li>
+              <li><strong>Object</strong> Visual similarity between objects can confuse the importance scoring mechanism</li>
+              <li><strong>Goal</strong> Complex goal states may require maintaining more global context</li>
+              <li><strong>Long</strong> Dynamic importance of tokens across different task phases presents challenges</li>
+            </ul>
+            <p>
+              These insights guide our future work on adaptive pruning ratios and task-specific token retention strategies.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Youtube video -->
+<!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      Paper video. -->
+      <!-- <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            Youtube embed code here
+            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <!-- </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 <!-- End youtube video -->
 
 
 <!-- Video carousel -->
-<section class="hero is-small">
+<!-- <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Another Carousel</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
           <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
+            Your video file here
             <source src="static/videos/carousel1.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video2">
           <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
+            Your video file here
             <source src="static/videos/carousel2.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video3">
           <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
+            Your video file here -->
+            <!-- <source src="static/videos/carousel3.mp4"
             type="video/mp4">
           </video>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End video carousel -->
 
 
