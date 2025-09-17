@@ -659,7 +659,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title is-3 has-text-centered">📚 Citation</h2>
     <div class="bibtex-container">
-      <pre><code>@misc{jiang2025betterlearnsmarterprune,
+      <pre class="bibtex-pre"><code class="bibtex-code">@misc{jiang2025betterlearnsmarterprune,
       title={The Better You Learn, The Smarter You Prune: Towards Efficient Vision-language-action Models via Differentiable Token Pruning}, 
       author={Titong Jiang and Xuefeng Jiang and Yuan Ma and Xin Wen and Bailin Li and Kun Zhan and Peng Jia and Yahui Liu and Sheng Sun and Xianpeng Lang},
       year={2025},
@@ -668,9 +668,76 @@
       primaryClass={cs.RO},
       url={https://arxiv.org/abs/2509.12594}, 
 }</code></pre>
+      <button class="copy-btn" aria-label="Copy to clipboard">Copy</button>
     </div>
   </div>
 </section>
+
+<style>
+.bibtex-container {
+  position: relative;
+  margin: 1em 0;
+}
+
+.bibtex-pre {
+  margin: 0;
+  padding: 1em;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.25em 0.6em;
+  font-size: 0.875em;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  background-color: #3498db;
+}
+
+.copy-btn.copied {
+  background-color: #27ae60;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.bibtex-container');
+  const codeBlock = container.querySelector('.bibtex-code');
+  const copyBtn = container.querySelector('.copy-btn');
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(codeBlock.textContent);
+      
+      // 可选：视觉反馈
+      copyBtn.textContent = '✅ Copied!';
+      copyBtn.classList.add('copied');
+      
+      setTimeout(() => {
+        copyBtn.textContent = 'Copy';
+        copyBtn.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+      alert('Failed to copy. Please select and copy manually.');
+    }
+  });
+});
+</script>
 
 <!-- Footer -->
 <footer class="footer">
